@@ -45,3 +45,7 @@ export const MorseNumbers = {
   9: ["-", "-", "-", "-", "."],
   0: ["-", "-", "-", "-", "-"]
 }
+
+export const MorseSpecial = {
+
+}
