@@ -8,9 +8,8 @@ export const wordToCharacters = (word: string) => {
   let characters = [];
 
   for (let i = 0; i < word.length; i++) {
-
-    characters.push(word[i])
+    characters.push(word[i]);
   }
 
-  return characters
-}
+  return characters;
+};

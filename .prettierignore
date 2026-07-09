@@ -1,0 +1,19 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.next
+out
+build
+dist
+.turbo
+.vercel
+
+# Coverage
+coverage
+
+# Lockfiles
+pnpm-lock.yaml
+
+# Generated / minified
+*.min.js

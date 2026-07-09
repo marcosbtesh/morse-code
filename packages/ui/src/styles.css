@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/*
+ * Tailwind entry for the @repo/ui package.
+ *
+ * Scan every component in this package so the Tailwind language server can
+ * provide IntelliSense while editing UI components, and so this stylesheet
+ * works if an app imports `@repo/ui/styles.css` directly.
+ *
+ * NOTE: apps that consume @repo/ui must also register this package as a
+ * source (Tailwind ignores node_modules), e.g. in the app's own CSS:
+ *   @source "../../../packages/ui/src";
+ */
+@source "./**/*.{ts,tsx}";

@@ -1,1 +1,1 @@
-const charactersRegex = RegExp("[a-zA-Z]")
+const charactersRegex = RegExp("[a-zA-Z]");

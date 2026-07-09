@@ -1,4 +1,8 @@
 @import "tailwindcss";
+
+/* Compile Tailwind classes used inside the @repo/ui package (Tailwind ignores node_modules). */
+@source "../../../packages/ui/src";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

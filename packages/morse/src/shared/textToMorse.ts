@@ -11,12 +11,10 @@ export const textToMorse = ({ text }: TextToMorseProps) => {
   const words = stringToWords(text);
 
   for (const word in words) {
-    const characters = wordToCharacters(word)
+    const characters = wordToCharacters(word);
 
     for (const character in characters) {
-
-      const morse_equivalent = Object.keys(MorseLetters)[character]
-
+      const morse_equivalent = Object.keys(MorseLetters)[character];
     }
   }
 };

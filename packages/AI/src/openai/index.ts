@@ -1,3 +1,3 @@
-import OpenAi from "openai"
+import OpenAi from "openai";
 
-const Client = openai
+const Client = openai;
