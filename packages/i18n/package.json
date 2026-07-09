@@ -5,7 +5,10 @@
     "dev": "tsc --watch",
     "build": "tsc"
   },
-  "exports": {},
+  "exports": {
+    ".": "./src/index.ts",
+    "./en/*": "./src/languages/en/*.json"
+  },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^22.15.3",
