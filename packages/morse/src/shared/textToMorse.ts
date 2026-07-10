@@ -1,5 +1,5 @@
-import { MorseLetters } from "../types/morseConstants";
-import { stringToWords, wordToCharacters } from "./Utils/strings";
+import { MorseLetters } from "../types/morseConstants.js";
+import { stringToWords, wordToCharacters } from "./Utils/strings.js";
 
 interface TextToMorseProps {
   text: string;
@@ -10,10 +10,10 @@ export const textToMorse = ({ text }: TextToMorseProps) => {
 
   const words = stringToWords(text);
 
-  for (const word in words) {
+  for (const word of words) {
     const characters = wordToCharacters(word);
 
-    for (const character in characters) {
+    for (const character of characters) {
       const morse_equivalent = Object.keys(MorseLetters)[character];
     }
   }
