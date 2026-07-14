@@ -1,6 +1,7 @@
 export const MorseContants = {
   LENGTH_SPACE: 5,
   LENGTH_CHARACTER: 1,
+  SILENT_CHARACTER: "%"
 };
 
 export const MorseLetters = {
