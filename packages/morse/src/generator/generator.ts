@@ -12,8 +12,8 @@ export const textToMorse = ({ text }: { text: String }): Array<String> => {
 
     for (const character of word) {
 
-      const characterInMorse = handleCharacter({ character })
-      morseEquivalent = generateMorse({ morseEquivalent: characterInMorse })
+      const characterInMorse = handleCharacter({ character: character.toLowerCase() })
+      morseEquivalent += generateMorse({ morseEquivalent: characterInMorse })
 
     }
 
