@@ -1,3 +1,3 @@
-export const charactersRegex = RegExp("[a-zA-Z]");
+export const charactersRegex = RegExp("[a-z]");
 
-export const numbersRegex = RegExp("[0-9]")
+export const numbersRegex = RegExp("[0-9]");

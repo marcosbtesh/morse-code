@@ -1,72 +1,55 @@
-import { stringToWords } from "../shared/Utils/strings.js"
-import { MorseContants, MorseLetters, MorseNumbers } from "../types/morseConstants.js"
-import { charactersRegex, numbersRegex } from "../types/regex.js"
+import { stringToWords } from "../shared/Utils/strings.js";
+import {
+  MorseContants,
+  MorseLetters,
+  MorseNumbers,
+} from "../types/morseConstants.js";
+import { charactersRegex, numbersRegex } from "../types/regex.js";
+
+const letters = MorseLetters as Record<string, Array<String> | undefined>;
+const numbers = MorseNumbers as Record<string, Array<String> | undefined>;
+
+const characterGap: Array<String> = generateSilence(MorseContants.LENGTH_SPACE);
 
 export const textToMorse = ({ text }: { text: String }): Array<String> => {
+  const words = stringToWords(text.toLowerCase());
 
+  return words
+    .map(encodeWord)
+    .filter((wordMorse) => wordMorse.length > 0)
+    .reduce(joinWithGap, [] as Array<String>);
+};
 
-  const words = stringToWords(text)
-  let morseEquivalent;
+const encodeWord = (word: string): Array<String> =>
+  [...word]
+    .map((character) => handleCharacter({ character }))
+    .filter((characterMorse) => characterMorse.length > 0)
+    .reduce(joinWithGap, [] as Array<String>);
 
-  for (const word of words) {
-
-    for (const character of word) {
-
-      const characterInMorse = handleCharacter({ character: character.toLowerCase() })
-      morseEquivalent += generateMorse({ morseEquivalent: characterInMorse })
-
-    }
-
-  }
-
-  return morseEquivalent
-
-}
-
-const handleCharacter = ({ character }: { character: string }): Array<string> => {
-
-  let morseEquivalent;
-
+const handleCharacter = ({
+  character,
+}: {
+  character: string;
+}): Array<String> => {
   if (charactersRegex.test(character)) {
-
-    morseEquivalent = MorseLetters[character]
-
-
-  } else if (numbersRegex.test(character)) {
-    morseEquivalent = MorseNumbers[character]
+    return letters[character] ?? [];
   }
 
-  return morseEquivalent
-
-
-}
-
-
-const generateMorse = ({ morseEquivalent }: { morseEquivalent: Array<String> }) => {
-
-
-  if (morseEquivalent == null) {
-    morseEquivalent = morseEquivalent
-  } else {
-    // morseEquivalent = `${generateMorseSpaces()} ${MorseContants.LENGTH_SPACE}`
-    morseEquivalent.concat(generateMorseSpaces())
-    morseEquivalent.concat(" ")
-
+  if (numbersRegex.test(character)) {
+    return numbers[character] ?? [];
   }
 
-  return morseEquivalent
+  return [];
+};
 
-}
+const joinWithGap = (
+  accumulated: Array<String>,
+  segment: Array<String>,
+): Array<String> =>
+  accumulated.length === 0
+    ? segment
+    : [...accumulated, ...characterGap, ...segment];
 
-const generateMorseSpaces = (): Array<String> => {
-
-  let morseSpacesEquivalent: Array<String> = []
-
-
-  for (let i = 0; i < MorseContants.LENGTH_SPACE; i++) {
-    morseSpacesEquivalent.concat(MorseContants.SILENT_CHARACTER)
-  }
-
-  return morseSpacesEquivalent
-
+function generateSilence(length: number): Array<String> {
+  return Array.from({ length }, () => MorseContants.SILENT_CHARACTER);
 }

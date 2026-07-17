@@ -1,3 +1,3 @@
 import { textToMorse } from "../generator/generator.js";
 
-console.log(textToMorse({ text: "" }))
+console.log(textToMorse({ text: "Test" }));
